@@ -1,0 +1,269 @@
+:root {
+    --bg: #16181b;
+    --text: #c2c2c2;
+    --surface: #1b1e1f;
+    --surface-hover: #222121;
+    --accent: #37c9c9;
+    --transition-speed: 0.3s;
+}
+
+[data-theme="light"] {
+    --bg: #ecebe7;
+    --text: #2a2a2a;
+    --surface: #f1f0ee;
+    --surface-hover: #e4dddd;
+    --accent: #e2a600;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: color var(--transition-speed), background-color var(--transition-speed);
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: 
+        radial-gradient(circle at 25px 25px, var(--surface) 2%, transparent 0%),
+        radial-gradient(circle at 75px 75px, var(--surface) 2%, transparent 0%);
+    background-size: 100px 100px;
+}
+
+main {
+    max-width: 1400px;
+    margin: 0;
+    padding: 2rem;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    position: relative;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+}
+
+#themeToggle {
+    background: var(--surface);
+    border: none;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+#themeToggle:hover {
+    background: var(--surface-hover);
+}
+
+#themeToggle svg {
+    fill: none;
+    stroke: var(--text);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.sun {
+    display: none;
+}
+
+[data-theme="light"] .sun {
+    display: block;
+}
+
+[data-theme="light"] .moon {
+    display: none;
+}
+
+section {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 0.6rem;
+    transition: background-color 0.3s, box-shadow 0.3s;
+
+}
+
+section:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.primary-links {
+    width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.icon-link:active svg,
+.small-icon-link:active svg {
+    transform: scale(0.95);
+}
+
+.icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text);
+    gap: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.icon-link:hover {
+    transform: translateY(-5px);
+}
+
+.icon-link:hover svg {
+    stroke: var(--accent);
+}
+
+.icon-link svg {
+    width: 42px;
+    height: 42px;
+    stroke: var(--text);
+    fill: none;
+    stroke-width: 2;
+}
+
+.secondary-links {
+    width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.small-icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text);
+    gap: 0.3rem;
+    font-size: 0.8rem;
+}
+
+.small-icon-link svg {
+    width: 30px;
+    height: 30px;
+    stroke: var(--text);
+    fill: none;
+    stroke-width: 2;
+}
+
+.small-icon-link:hover {
+    transform: translateY(-3px);
+}
+
+.small-icon-link:hover svg {
+    stroke: var(--accent);
+}
+
+.text-links {
+    width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+}
+
+.text-column {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.text-column a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-size: 0.8rem;
+}
+
+.text-column a:hover {
+    color: var(--accent);
+}
+
+.extra-links {
+    position: absolute;
+    top: 91.5%;
+    width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.collapse-toggle {
+    width: 860px;
+    background: var(--surface);
+    border-radius: 0.5rem;
+    border: none;
+    color: var(--text);
+    display: flex;
+    align-items: left;
+    gap: 1rem;
+    cursor: pointer;
+    padding: 0rem;
+    font-size: 0.7rem;
+}
+
+.collapse-toggle svg {
+    fill: none;
+    stroke: var(--text);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.3s;
+}
+
+.collapse-toggle.active svg {
+    transform: rotate(180deg);
+}
+
+.collapse-content {
+    width: 900px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    background: var(--surface);
+    border-radius: 0.6rem;
+    padding: 2rem;
+    display: none;
+    top: calc(100% + 1.5rem);
+    gap: 1rem;
+}
+
+.collapse-content.active {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+}
+
+.extra-links .text-column {
+    width: 150px;
+}
